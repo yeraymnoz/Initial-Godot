@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://b72n8f3ian1ol"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_efli7"]
+[ext_resource type="Texture2D" uid="uid://cbpjduidxdqxi" path="res://Sprites/Player/ToxicFrogPurpleWhite_Sheet.png" id="1_ryyi5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8obb"]
+atlas = ExtResource("1_ryyi5")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1rgf"]
+atlas = ExtResource("1_ryyi5")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yau5w"]
+atlas = ExtResource("1_ryyi5")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dfas"]
+atlas = ExtResource("1_ryyi5")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pso6u"]
+atlas = ExtResource("1_ryyi5")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0iklw"]
+atlas = ExtResource("1_ryyi5")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5rgu"]
+atlas = ExtResource("1_ryyi5")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f21t7"]
+atlas = ExtResource("1_ryyi5")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_filws"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8obb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1rgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yau5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dfas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pso6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0iklw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5rgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f21t7")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fl61w"]
+radius = 6.00011
+height = 18.0
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 3
+script = ExtResource("1_efli7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -9)
+sprite_frames = SubResource("SpriteFrames_filws")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -6)
+rotation = -1.57091
+shape = SubResource("CapsuleShape2D_fl61w")
