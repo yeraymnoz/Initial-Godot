@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://b72n8f3ian1ol"]
+[gd_scene load_steps=50 format=3 uid="uid://b72n8f3ian1ol"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_efli7"]
 [ext_resource type="Texture2D" uid="uid://cbpjduidxdqxi" path="res://Sprites/Player/ToxicFrogPurpleWhite_Sheet.png" id="1_ryyi5"]
@@ -71,17 +71,9 @@ region = Rect2(288, 0, 48, 48)
 atlas = ExtResource("1_ryyi5")
 region = Rect2(336, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ds3fk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_86q1d"]
 atlas = ExtResource("1_ryyi5")
-region = Rect2(144, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pd4fk"]
-atlas = ExtResource("1_ryyi5")
-region = Rect2(192, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b7pgs"]
-atlas = ExtResource("1_ryyi5")
-region = Rect2(240, 48, 48, 48)
+region = Rect2(192, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kjanj"]
 atlas = ExtResource("1_ryyi5")
@@ -200,13 +192,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ds3fk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pd4fk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b7pgs")
+"texture": SubResource("AtlasTexture_86q1d")
 }],
 "loop": true,
 "name": &"Jump",
@@ -322,7 +308,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_csv54"]
-length = 0.428571
+length = 0.142857
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -331,10 +317,10 @@ tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.142857, 0.285714),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -451,7 +437,6 @@ animation = &"Walk"
 break_loop_at_end = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_0p8a0"]
-graph_offset = Vector2(82.7828, -18.8076)
 nodes/Dead/node = SubResource("AnimationNodeAnimation_fd11l")
 nodes/Dead/position = Vector2(680, 240)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_2buih")
@@ -477,8 +462,9 @@ script = ExtResource("1_efli7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_filws")
-animation = &"Walk"
+animation = &"Idle"
 autoplay = "Idle"
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, -6)
@@ -494,7 +480,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeBlendTree_0p8a0")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Movement/current_state = "Idle"
-parameters/Movement/transition_request = "Idle"
+parameters/Movement/transition_request = ""
 parameters/Movement/current_index = 0
 parameters/isJumping/active = false
 parameters/isJumping/internal_active = false
